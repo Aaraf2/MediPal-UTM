@@ -1,0 +1,97 @@
+<div class="container" id="container">
+  <div class="header" style="background-color:white; color:#721B09; ">
+    <img class="logo" src="../images/Logo-PKU.png" alt="ClinicCareLogo" />
+
+    <div>
+      <h1>Welcome to MediPal UTM</h1>
+    </div>
+
+    <div class="nav-images">
+      <a href="#" class="nav-logos"><img
+          src="../images/settings.png"
+          alt=""
+        /></a>
+
+      <div class="dropdown-notification">
+        <a href="#" class="nav-logos"><img
+            src="../images/notification.png"
+            alt=""
+          /></a>
+        <div class="dropdown-content">
+          <a href="#">You have missed an appointment</a>
+          <a href="#">Clear all notification</a>
+        </div>
+      </div>
+
+      <div class="dropdown-user">
+        <a href="# " class="nav-logos"><img
+            src="../images/user.png "
+            alt=" "
+          /></a>
+        <div class="dropdown-content2">
+          <a href="/logout">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <div class="toggle-btn" onclick="toggleSidebar()">
+      <a href="" onclick=" return false">
+        <div id="arrow-left"></div>
+      </a>
+    </div>
+
+    <a href="/patientdashboard" class="nav-active"><img
+        src="../images/home.png"
+      />Home</a>
+    <a href="/bookappointments"><img
+        src="../images/appointment-icon.svg"
+        alt=""
+      />Book Appointments</a>
+    <a href="/viewdiagnosticreport"><img
+        src="../images/diagnostic.svg"
+        alt=""
+      />View Prescriptions</a>
+    <a href="/viewactivities"><img
+        src="../images/activityicon.jpg"
+        alt=""
+      />View Activities</a>
+    <a href="/logout"><img src="../images/logout.png" alt="" />Logout
+    </a>
+  </div>
+
+  <div class="main" style="background-color:#8d8787; color:white; ">
+
+    <div class="top-container">
+      <div class="report-heading">
+        <h1>PRESCRIPTIONS</h1>
+      </div>
+      <div class="table-container">
+        <table id="report">
+          <tr>
+            <th>Type</th>
+            <th>Action</th>
+          </tr>
+          {{#each prescription}}
+            <tr>
+              <td>{{this.prescription_type}}</td>
+              <td><button
+                  onclick="window.location.href='viewpatientprescription/{{this._id}}'"
+                  class="card-button"
+                >View</button></td>
+            </tr>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+  function toggleSidebar() { document .getElementById("container")
+  .classList.toggle("container-no-sidebar");
+  document.getElementById("sidebar").classList.toggle("active");
+  document.getElementById("arrow-left").classList.toggle("active"); }
+</script>

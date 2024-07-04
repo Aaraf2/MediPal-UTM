@@ -1,0 +1,321 @@
+        * {box-sizing: border-box}
+        body {font-family: Verdana, sans-serif; margin:0}
+        .mySlides {display: none}
+        img {vertical-align: middle;}
+
+        /* Slideshow container */
+        .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+        background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Caption text */
+        .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+        background-color: #717171;
+        }
+
+        /* status bar and cards*/
+
+        .mid-container{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        width: 80%;
+        margin: 0 auto;
+        height: 60vh;
+        }
+
+        .upper-mid{
+        color: #721B09;
+        box-sizing: border-box;
+        border-top: 1px black solid;
+        background-color: rgb(201, 197, 197);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        }
+
+        .lower-mid{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        }
+
+        .left-card{
+        display: flex;
+        flex-direction: column;        
+        background-color: rgb(255, 255, 255);
+        }
+        .right-card{
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        }
+
+        .card-image{
+        width: 240px;
+        height: 217px;
+        }
+        
+        .card-button{
+        padding: 14px 20px;
+        margin: 8px 5px;
+        text-align: center;
+        text-decoration: none;
+        background-color: #721B09;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        }
+
+        /* view diagnostic report style */
+
+        .top-container{
+        
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        width: 80%;
+        margin: 60px auto;
+        height: 60vh;
+        }
+
+        .report-heading{
+        text-align: center;
+        color: #721B09;        
+        }
+
+        /* table report style */
+
+        .table-container{
+        display: flex;
+        padding: 20px;
+        justify-content: center;
+        overflow-y: scroll;
+        }
+
+        #report {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 80%;
+        }
+              
+        #report td, #report th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        }
+              
+        #report tr{background-color: #f2f2f2;}
+              
+        #report tr:hover {background-color: #ddd;}
+              
+        #report th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #721B09;
+        color: white;
+        }
+
+        /* id box container and input type text style */
+
+        .input-type-text{
+        width: 50%;
+        padding: 12px 20px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        }
+
+        .box-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;        
+        }
+
+        .box-container-button{
+        margin: 0 auto;
+        padding: 12px 20px;
+        width: 20%;
+        background-color: #721B09;
+        color: white;
+        border: 1px solid #721B09;
+        border-radius: 4px;
+        cursor: pointer;        
+        }
+
+        /* alert button danger*/
+
+        .alert {
+                padding: 15px;
+                background-color: rgba(255, 21, 0, 0.431);
+                color: rgb(255, 255, 255);
+                border: 1px solid red;
+                border-radius: 4px;
+                opacity: 0.75;
+              }
+              
+              .closebtn {
+                margin-left: 15px;
+                color: white;
+                font-weight: bold;
+                float: right;
+                font-size: 22px;
+                line-height: 20px;
+                cursor: pointer;
+                transition: 0.3s;
+              }
+              
+              .closebtn:hover {
+                color: black;
+              }
+
+        /* admin dashboard style */
+
+        .counter_container{
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+          height: 90vh;
+        }
+
+        .upper_container{
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          width: 100%;
+        }
+
+        .no_of_doctors, .no_of_patients, .no_of_pharmacists, .no_of_appointments{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          border: 2px #721B09 solid;
+          background-color: #c7c3c2;
+          color: #721B09;
+          box-shadow: 5px 10px rgb(95, 48, 48);
+          font-family: "Poppins", sans-serif;
+          width: 500px;
+          height: 250px;
+          transition: all 0.5s;
+        }
+
+        .no_of_doctors:hover, .no_of_patients:hover, .no_of_pharmacists:hover, .no_of_appointments:hover{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          border: 2px #f1ecec solid;
+          background-color: #742a1c;
+          color: #f1ecec;
+          box-shadow: 5px 10px rgb(88, 70, 70);
+          width: 500px;
+          height: 250px;
+          font-family: "Poppins", sans-serif;
+          font-size: 18px;
+          transform: scale(0.95);
+        }
+        
+        .lower_container{
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          width: 100%;
+        }
+        
+        .number{
+          font-style: italic;
+        }
+
+        .counts{
+          font-size: 30px;
+          font-style: italic;
+        }
+
+        /* Fading animation */
+        .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 1.5s;
+        animation-name: fade;
+        animation-duration: 1.5s;
+        }
+
+        @-webkit-keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+        }
+
+        @keyframes fade {
+        from {opacity: .4} 
+        to {opacity: 1}
+        }
+
+        /* On smaller screens, decrease text size */
+        @media only screen and (max-width: 300px) {
+        .prev, .next,.text {font-size: 11px}
+        }
+

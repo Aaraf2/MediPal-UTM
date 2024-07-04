@@ -1,0 +1,68 @@
+<div class="container-fluid vh-110" style="white">
+    <button type="button" onclick="window.location.href='/managepharmacy'" class="btn btn-danger mt-5 ms-5" style="background-color:#721B09; color:white;">Back</button>
+     <div class="row justify-content-center h-100">
+        <div class="card w-50 my-auto shadow mb-5">
+            <div class="card-header text-center">
+                <img src="../images/Logo-PKU.png" alt="utm-pku-logo" style="width: 13vw; height: 7vh">
+            </div>
+            <div class="card-body"> 
+                <br><h2 class="text-center" style="color:#721B09;">Add Pharmacist</h2><br>
+                {{#if success}}
+                    <div class="alert alert-success" role="alert">
+                        <a  style="text-decoration: none; padding: 1vh 6vh; font-size: 2vh;" 
+                            class="btn btn-link" href="/addpharmacist">successsss ! Click me to add another pharmacist :) 
+                        </a>
+                    </div>
+                {{else}}
+                    {{#if errors}}
+                        <div class="alert alert-danger" role="alert">
+                            <ul>
+                                {{#each errors}}
+                                    <li>{{this.msg}}</li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    {{/if}}
+                <form action="/addPharmacist" method="POST" enctype="application/json">
+                    <div class="form-group">   
+                        <label for="username" style="color:#721B09;">Username: </label><br>
+                        <input type="text" id="username" class="form-control" name="username" placeholder="Username"><br>
+                    </div>
+                    <div class="form-group">   
+                        <label for="name" style="color:#721B09;">Name: </label><br>
+                        <input type="text" id="name" class="form-control" name="name" placeholder="Name"><br>
+                    </div>
+                    <div class="form-group">   
+                        <label for="email" style="color:#721B09;">Email: </label><br>
+                        <input type="email" id="email" class="form-control" name="email" placeholder="Email"><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" style="color:#721B09;">Password:</label><br>
+                        <input type="password" id="password" class="form-control" name="password" placeholder="Password"><br>
+                    </div>
+                    <div class="form-group">
+                        <label for="age" style="color:#721B09;">Age:</label><br>
+                        <input type="text" id="age" class="form-control" name="age" placeholder="Age"><br>
+                    </div>
+                    <div class="form-group">
+                        <p style="color:#721B09;">Gender:</p>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="gender" value="Male">
+                            <label class="form-check-label" for="gender">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="gender" value="Female">
+                            <label class="form-check-label" for="gender">Female</label>
+                        </div>
+                    </div>
+                    <br>
+                    <button class="btn btn-block w-100" style="background-color:#721B09; color:white; " value="submit">Add</button>
+                </form>
+                {{/if}}
+            </div>
+            <div class="card=footer">
+
+            </div>
+        </div>
+     </div>
+</div>

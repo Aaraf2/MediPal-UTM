@@ -1,0 +1,78 @@
+<div class="container-fluid vh-100" style="background-color:white;">
+    <p class="mt-5 ms-5" style="color: #721B09;">If the patient takes long to come in, discard the booking and go back</p>
+    <button type="button" onclick="window.location.href='/discardbooking/{{appointment._id}}'" class="btn btn-danger mt-5 ms-5" style="background-color:#721B09; color:white;">Discard and go back</button>
+     <div class="row justify-content-center h-100">
+        <div class="card w-50 my-auto shadow">
+            <div class="card-header text-center">
+                <div class="row">
+                    <div class="col-6">
+                        <img src="../images/Logo-PKU.png" alt="utm-pku-logo" style="width: 13vw; height: 7vh">
+                    </div>
+                    <div class="col-6">
+                        <h2 class="text-center p-2" style="color:#721B09;">Issue Prescription</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body"> 
+                
+                <div style="color:#721B09;">
+                    <h3>Patient's Details:</h3>
+                    <p>Name: {{appointment.patient.name}}</p>
+                    <p>Age: {{appointment.patient.age}}</p>
+                    <p>Gender: {{appointment.patient.gender}}</p>
+                    <p>Matric no.: {{appointment.patient.matric_no}}</p>
+                    <p>IC no.: {{appointment.patient.ic_no}}</p>
+                    <p>Phone no.: {{appointment.patient.phone_no}}</p>
+                </div>
+                
+                <div style="color:#721B09;">
+                    <h3>Add Prescription</h3>
+                </div>
+                <form action="/issueprescription" method="POST" enctype="application/json">
+                    <div class="form-group" style="display: none;">   
+                        <label for="matric_no" style="color:#721B09;">Matric No: </label><br>
+                        <input type="text" id="matric_no" class="form-control" name="matric_no" placeholder="Matric No" value="{{appointment.patient.matric_no}}"><br>
+                    </div>
+                    <div class="form-group">   
+                        <label for="issue_date" style="color:#721B09;">Issue Date: </label><br>
+                        <input type="date" id="issue_date" class="form-control" name="issue_date" placeholder="Issue Date"><br>
+                    </div>
+                    <div class="form-group">   
+                        <label for="prescription_type" style="color:#721B09;">Prescription Type: </label><br>
+                        <input type="text" id="prescription_type" class="form-control" name="prescription_type" placeholder="Prescription Type"><br>
+                    </div>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a prescription here" id="prescription_details" name="prescription_details" style="height: 100px"></textarea><br>
+                        <label for="prescription_details" style="color:#721B09;">Prescription Details: </label>
+                    </div>
+                    <button class="btn btn-block w-100" style="background-color:#721B09; color:white; " value="submit">Prescribe</button>
+                </form>
+            </div>
+            <div class="card=footer">
+
+            </div>
+        </div>
+     </div>
+</div>
+
+<script>
+    $(function(){
+    var dtToday = new Date();
+    
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+        day = '0' + day.toString();
+    
+    var maxDate = year + '-' + month + '-' + day;
+
+    // or instead:
+    // var maxDate = dtToday.toISOString().substr(0, 10);
+
+    
+    $('#issue_date').attr('min', maxDate);
+});
+</script>

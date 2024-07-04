@@ -1,0 +1,178 @@
+<div class="container" id="container">
+  <div class="header" style="background-color:white; color:#721B09; ">
+    <img class="logo" src="../images/Logo-PKU.png" alt="ClinicCareLogo" />
+
+    {{! <div class="date-time">
+          <p id="date">May 2, 2020</p>
+          <p id="time">20:05</p>
+        </div> }}
+
+    <div>
+      <h1>Welcome to MediPal UTM</h1>
+    </div>
+
+    {{!<div class="search-bar">
+          <div class="dropdown-box">
+            <input type="text" name="search" autocomplete="off" />
+            <a href="#" class="searching-button"
+              ><img class="nav-icon" src="src/img/magnify-glass.svg" alt=""
+            /></a>
+
+            <div class="searchbar-dropdown">
+              <input type="radio" id="search-by-id" name="src" />
+              <label for="search-by-id">Search by ID</label>
+              <br />
+              <br />
+              <input type="radio" id="search-by-name" name="src" />
+              <label for="search-by-name">Search by Name</label>
+            </div>
+          </div>
+        </div> }}
+
+    <div class="nav-images">
+      <a href="#" class="nav-logos"><img
+          src="../images/settings.png"
+          alt=""
+        /></a>
+
+      <div class="dropdown-notification">
+        <a href="#" class="nav-logos"><img
+            src="../images/notification.png"
+            alt=""
+          /></a>
+        <div class="dropdown-content">
+          <a href="#">You have missed an appointment</a>
+          <a href="#">Clear all notification</a>
+        </div>
+      </div>
+
+      <div class="dropdown-user">
+        <a href="# " class="nav-logos"><img
+            src="../images/user.png "
+            alt=" "
+          /></a>
+        <div class="dropdown-content2">
+          <a href="/logout">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <div class="toggle-btn" onclick="toggleSidebar()">
+      <a href="" onclick=" return false">
+        <div id="arrow-left"></div>
+      </a>
+    </div>
+
+    <a href="/patientdashboard" class="nav-active"><img
+        src="../images/home.png"
+      />Home</a>
+    <a href="/bookappointments"><img
+        src="../images/appointment-icon.svg"
+        alt=""
+      />Book Appointments</a>
+    <a href="/viewdiagnosticreport"><img
+        src="../images/diagnostic.svg"
+        alt=""
+      />View Prescriptions</a>
+    <a href="/viewactivities"><img
+        src="../images/activityicon.jpg"
+        alt=""
+      />View Activities</a>
+    <a href="/logout"><img src="../images/logout.png" alt="" />Logout
+    </a>
+  </div>
+
+  <div class="main" style="background-color:#8d8787; color:white; ">
+    <br />
+    <div class="slideshow-container">
+
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <img src="../images/pku-utm.jpg" style="width:100%" />
+        <div class="text">PKU Ambulance</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+        <img src="../images/pku-front.jpg" style="width:100%" />
+        <div class="text">PKU UTM-JB</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <img src="../images/pku-act.jpg" style="width:100%" />
+        <div class="text">Activity</div>
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    </div>
+    <br />
+
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="mid-container">
+      <div class="upper-mid">
+        <h1 class="upper-mid-heading">Track Status</h1>
+
+        <p id="patient_id" style="display: none;">{{patientid}}</p>
+        <p class="room-call-bar" id="sse"></p>
+      </div>
+      <div class="lower-mid">
+        <div class="left-card">
+          <img
+            class="card-image"
+            src="../images/appointment.jpg"
+            alt="book-appointment"
+          />
+          <a class="card-button" href="/bookappointments">Book Appointments</a>
+        </div>
+        <div class="right-card">
+          <img
+            class="card-image"
+            src="../images/med-report.jpg"
+            alt="view-report"
+          />
+          <a class="card-button" href="/viewdiagnosticreport">View Prescriptions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  function toggleSidebar() { document .getElementById("container")
+  .classList.toggle("container-no-sidebar");
+  document.getElementById("sidebar").classList.toggle("active");
+  document.getElementById("arrow-left").classList.toggle("active"); } var
+  slideIndex = 1; showSlides(slideIndex); function plusSlides(n) {
+  showSlides(slideIndex += n); } function currentSlide(n) {
+  showSlides(slideIndex = n); } function showSlides(n) { var i; var slides =
+  document.getElementsByClassName("mySlides"); var dots =
+  document.getElementsByClassName("dot"); if (n > slides.length) {slideIndex =
+  1} if (n < 1) {slideIndex = slides.length} for (i = 0; i < slides.length; i++)
+  { slides[i].style.display = "none"; } for (i = 0; i < dots.length; i++) {
+  dots[i].className = dots[i].className.replace(" active", ""); }
+  slides[slideIndex-1].style.display = "block"; dots[slideIndex-1].className +=
+  " active"; } if (!!window.EventSource) { const id =
+  document.getElementById('patient_id').innerHTML console.log('inner id ', id)
+  const source = new EventSource(`/events/bookingEvents/${id}`)
+  source.addEventListener('message', function(e) { console.log('recieved data',
+  e) const data = JSON.parse(e.data); document.getElementById('sse').innerHTML =
+  data.message; }, false) source.addEventListener('open', function(e) {
+  console.log("Connection was opened") }, false)
+  source.addEventListener('error', function(e) { if (e.readyState ==
+  EventSource.CLOSED) { console.log("Connection was closed") } }, false) }
+
+</script>
